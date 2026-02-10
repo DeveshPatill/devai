@@ -9,10 +9,11 @@ export const MeetingsView = () => {
     const trpc = useTRPC();
     const { data } = useSuspenseQuery(trpc.meetings.getMany.queryOptions({}));
 
-
+  
     return(
-        <div>
-            {JSON.stringify(data)}
+        <div className="overflow-x-scroll">
+            {/* {JSON.stringify(data)} */}
+            TODO: Data Table
         </div>
     );
 };
@@ -28,3 +29,5 @@ export const MeetingsViewError = () => {
         <ErrorState title="Error Loading Meetings" description="Please try again later" />
     );
 };
+
+

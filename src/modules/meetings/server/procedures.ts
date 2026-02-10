@@ -6,32 +6,33 @@ import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
 import { and, count , desc, eq, getTableColumns,ilike } from "drizzle-orm";
 import { DEFAULT_PAGE, DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE, MIN_PAGE_SIZE } from "@/constants";
 import { TRPCError } from "@trpc/server";
-// import { agentsUpdateSchema } from "../schemas";
+import { meetingsInsertSchema } from "../schemas";
+import { meetingsUpdateSchema } from "../schemas";
 
 
 export const meetingsRouter = createTRPCRouter({
-    // update: protectedProcedure
-    //     .input(agentsUpdateSchema)
-    //     .mutation(async ({ ctx, input }) => {
-    //         const [updatedAgent] = await db
-    //             .update(agents)
-    //             .set(input)
-    //             .where(
-    //                 and(
-    //                     eq(agents.id, input.id),
-    //                     eq(agents.userId, ctx.auth.user.id),
-    //                 )
-    //             )
-    //             .returning();
+    update: protectedProcedure
+        .input(meetingsUpdateSchema)
+        .mutation(async ({ ctx, input }) => {
+            const [updatedMeeting] = await db
+                .update(meetings)
+                .set(input)
+                .where(
+                    and(
+                        eq(meetings.id, input.id),
+                        eq(meetings.userId, ctx.auth.user.id),
+                    )
+                )
+                .returning();
 
-    //         if (!updatedAgent) {
-    //             throw new TRPCError({
-    //                 code: "NOT_FOUND",
-    //                 message: "Agent not found",
-    //             }); 
-    //         }
-    //         return updatedAgent;
-    //     }),
+            if (!updatedMeeting) {
+                throw new TRPCError({
+                    code: "NOT_FOUND",
+                    message: "Meeting not found",
+                }); 
+            }
+            return updatedMeeting;
+        }),
 
     // remove: protectedProcedure
     //     .input(z.object({ id: z.string() }))
@@ -54,6 +55,25 @@ export const meetingsRouter = createTRPCRouter({
     //         }
     //         return removedAgent;
     //     }),
+
+    create: protectedProcedure
+            .input(meetingsInsertSchema)
+            .mutation(async({ input, ctx }) => {
+                const [createdMeeting] = await db
+                    .insert(meetings)
+                    .values({
+                        ...input,
+                        userId: ctx.auth.user.id,
+                    })
+                    .returning();
+
+                    //TODO: CREATE STREAM CALL, upsert stream users
+
+
+
+
+                return createdMeeting;
+            }),
 
     getOne: protectedProcedure
     .input(z.object({ id: z.string() }))
