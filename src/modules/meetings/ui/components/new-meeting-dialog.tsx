@@ -1,6 +1,4 @@
 import { ResponsiveDialog } from "@/components/responsive-dialog";
-// import { Props } from "recharts/types/container/Surface";
-// import { AgentForm } from "./agent-form";
 import { MeetingForm } from "./meeting-form"; 
 import { useRouter } from "next/navigation";
 
@@ -24,11 +22,6 @@ export const NewMeetingDialog = ({
             open={open}
             onOpenChange={onOpenChange}
         >
-          {/* <AgentForm 
-            onSuccess={() => onOpenChange(false)}
-            onCancel={() => onOpenChange(false)}
-
-          />  */}
           <MeetingForm
           onSuccess={(id) => {
             onOpenChange(false);
