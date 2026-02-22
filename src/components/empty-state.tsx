@@ -10,7 +10,7 @@ interface Props {
 export const EmptyState = ({
    title,
    description,
-   image = "/empty.svg "
+   image = "/empty.svg"
 }:Props) => {
     return (
         <div className=" flex flex-col items-center justify-center">

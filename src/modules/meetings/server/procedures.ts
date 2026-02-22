@@ -85,27 +85,6 @@ export const meetingsRouter = createTRPCRouter({
             return updatedMeeting;
         }),
 
-    // remove: protectedProcedure
-    //     .input(z.object({ id: z.string() }))
-    //     .mutation(async ({ctx, input}) => {
-    //         const [removedAgent] = await db
-    //             .delete(agents)
-    //             .where(
-    //                 and(
-    //                     eq(agents.id, input.id),
-    //                     eq(agents.userId, ctx.auth.user.id),
-    //                 )
-    //             )
-    //             .returning();
-
-    //         if (!removedAgent) {
-    //             throw new TRPCError({
-    //                 code: "NOT_FOUND",
-    //                 message: "Agent not found",
-    //             });
-    //         }
-    //         return removedAgent;
-    //     }),
 
     create: protectedProcedure
             .input(meetingsInsertSchema)
@@ -189,8 +168,6 @@ export const meetingsRouter = createTRPCRouter({
                 throw new TRPCError({ code: "NOT_FOUND", message: "Meeting not found" });
             }
         
-        //await new Promise((resolve) => setTimeout(resolve,5000));
-        // throw new TRPCError({code: "BAD_REQUEST"});
 
         return existingMeeting;
     }),
@@ -264,18 +241,8 @@ export const meetingsRouter = createTRPCRouter({
     
   }),
 
-}); // ----> once u un-comment other things remove this section
+}); 
 
-//     create: protectedProcedure
-//         .input(agentsInsertSchema)
-//         .mutation(async({ input, ctx }) => {
-//             const [createdAgent] = await db
-//                 .insert(agents)
-//                 .values({
-//                     ...input,
-//                     userId: ctx.auth.user.id,
-//                 })
-//                 .returning();
-//             return createdAgent;
-//         }),
-// });
+
+
+

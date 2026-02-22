@@ -76,9 +76,6 @@ export const agentsRouter = createTRPCRouter({
                 throw new TRPCError({ code: "NOT_FOUND", message: "Agent not found" });
             }
         
-        //await new Promise((resolve) => setTimeout(resolve,5000));
-        // throw new TRPCError({code: "BAD_REQUEST"});
-
         return existingAgent;
     }),
 
@@ -95,8 +92,6 @@ export const agentsRouter = createTRPCRouter({
     )
     .query(async ({ctx, input}) => {
         const { search,  page, pageSize } = input;
-
-
 
         const data = await db
         .select({
