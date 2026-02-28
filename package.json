@@ -8,12 +8,14 @@
     "start": "next start",
     "lint": "next lint",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "dev:webhook": "ngrok http --url=wisdomless-ahmed-luminously.ngrok-free.dev 3000"
   },
   "dependencies": {
     "@dicebear/collection": "^9.2.4",
     "@dicebear/core": "^9.2.4",
     "@hookform/resolvers": "^5.2.2",
+    "@inngest/agent-kit": "^0.8.0",
     "@neondatabase/serverless": "^1.0.0",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
@@ -60,7 +62,9 @@
     "drizzle-orm": "^0.43.1",
     "embla-carousel-react": "^8.6.0",
     "humanize-duration": "^3.33.2",
+    "inngest": "^3.37.0",
     "input-otp": "^1.4.2",
+    "jsonl-parse-stringify": "^1.0.3",
     "lucide-react": "^0.562.0",
     "nanoid": "^5.1.6",
     "next": "^15.5.9",
@@ -79,7 +83,7 @@
     "tailwind-merge": "^3.4.0",
     "utf-8-validate": "^6.0.6",
     "vaul": "^1.1.2",
-    "zod": "^3.25.7"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
