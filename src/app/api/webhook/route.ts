@@ -119,7 +119,6 @@
 
 import { and, eq, not } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
-// import { headers } from "next/headers";
 
 import {
   CallEndedEvent,
