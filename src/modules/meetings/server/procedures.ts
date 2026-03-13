@@ -2,13 +2,13 @@ import { z } from "zod";
 import JSONL from "jsonl-parse-stringify";
 import { db } from "@/db";
 import { agents, meetings, user } from "@/db/schema";
-import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
+import { createTRPCRouter, PremiumProcedure, protectedProcedure } from "@/trpc/init";
 import { and, count , desc, eq, getTableColumns,ilike, inArray, sql } from "drizzle-orm";
 import { DEFAULT_PAGE, DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE, MIN_PAGE_SIZE } from "@/constants";
 import { TRPCError } from "@trpc/server";
 import { meetingsInsertSchema } from "../schemas";
 import { meetingsUpdateSchema } from "../schemas";
-import { duration } from "drizzle-orm/gel-core";
+// import { duration } from "drizzle-orm/gel-core";
 import { MeetingStatus, StreamTranscriptItem } from "../types";
 import { streamVideo } from "@/lib/stream-video";
 import { generateAvatarUri } from "@/lib/avatar";
@@ -189,7 +189,7 @@ export const meetingsRouter = createTRPCRouter({
         }),
 
 
-    create: protectedProcedure
+    create: PremiumProcedure("meetings")
             .input(meetingsInsertSchema)
             .mutation(async({ input, ctx }) => {
                 const [createdMeeting] = await db

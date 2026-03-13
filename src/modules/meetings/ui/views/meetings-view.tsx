@@ -10,9 +10,9 @@ import { EmptyState } from "@/components/empty-state";
 import { useRouter } from "next/navigation";
 import { useMeetingsFilters } from "../../hooks/use-meetings-filters";
 import { DataPagination } from "@/components/data-pagination";
-import { meetings } from "@/db/schema";
-import page from "@/app/(dashboard)/meetings/page";
-import { Row } from "react-day-picker";
+// import { meetings } from "@/db/schema";
+// import page from "@/app/(dashboard)/meetings/page";
+// import { Row } from "react-day-picker";
 
 export const MeetingsView = () => {
     const trpc = useTRPC();

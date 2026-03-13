@@ -6,8 +6,8 @@ import { CommandSelect } from "@/components/command-select";
 import { GeneratedAvatar } from "@/components/generated-avatar";
 
 import { useMeetingsFilters } from "../../hooks/use-meetings-filters";
-import { agents } from "@/db/schema";
-import { Value } from "@radix-ui/react-select";
+// import { agents } from "@/db/schema";
+// import { Value } from "@radix-ui/react-select";
 
 export const AgentIdFilter = () => {
     const [filters, setFilters] = useMeetingsFilters();

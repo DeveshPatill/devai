@@ -20,6 +20,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import {FaGithub, FaGoogle} from "react-icons/fa";
+import Image from "next/image";
+
 
 
 const formSchema = z.object({
@@ -149,7 +151,8 @@ export const SignInView = () => {
                                 </div>
                                 {!!error && (
                                     <Alert className="bg-destructive/10 border-none">
-                                        <OctagonAlertIcon className="h-4 w-4 !text-destructive" />
+                                        {/* <OctagonAlertIcon className="h-4 w-4 !text-destructive" /> */}
+                                        <OctagonAlertIcon className="h-4 w-4 text-destructive" />
                                         <AlertTitle>{error}</AlertTitle>
                                     </Alert>
                                 )}
@@ -193,7 +196,10 @@ export const SignInView = () => {
                     </Form>
 
                     <div className="bg-radial from-sidebar-accent to-sidebar relative hidden md:flex flex-col gap-y-4 items-center justify-center">
-                        <img src="/logo.svg" alt="Image" className="h-[92px] w-[92px]" />
+                        {/* <img src="/logo.svg" alt="Image" className="h-[92px] w-[92px]" /> */}
+                        <Image
+                            src="/logo.svg" alt="Image" width={92} height={92}
+                        />
                         <p className="text-2xl font-semibold text-white">Dev.AI</p>
                     </div>
                     {/* Sign In View */}

@@ -14,7 +14,7 @@ import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { generateAvatarUri } from "@/lib/avatar";
 import "@stream-io/video-react-sdk/dist/css/styles.css";
-import { GeneratedAvatar } from "@/components/generated-avatar";
+// import { GeneratedAvatar } from "@/components/generated-avatar";
 
 interface Props {
   onJoin: () => void;

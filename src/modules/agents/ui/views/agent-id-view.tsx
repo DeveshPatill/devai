@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ErrorState } from "@/components/error-state";
 import { LoadingState } from "@/components/loading-state";
 import { useTRPC } from "@/trpc/client";
-import { QueryClient, useMutation, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
+import {  useMutation, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import { AgentIdViewHeader } from "../components/agent-id-view-header";
 import { GeneratedAvatar } from "@/components/generated-avatar";
 import { Badge } from "@/components/ui/badge";
@@ -32,7 +32,9 @@ export const AgentIdView = ({ agentId }: Props) => {
         trpc.agents.remove.mutationOptions({
             onSuccess: async () => {
                 await queryClient.invalidateQueries(trpc.agents.getMany.queryOptions({}));
-                // todo: invalidate free tier usage
+                await queryClient.invalidateQueries(
+                    trpc.premium.getFreeUsage.queryOptions(),
+                );
                 router.push("/agents");
             },
             onError: (error) => {

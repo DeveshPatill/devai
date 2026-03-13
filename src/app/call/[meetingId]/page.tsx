@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { getQueryClient, trpc } from "@/trpc/server";
 import { CallView } from "@/modules/call/ui/views/call-view";
-import page from "@/app/(dashboard)/meetings/page";
+// import page from "@/app/(dashboard)/meetings/page";
 
 interface Props {
   params: Promise<{
@@ -12,7 +12,7 @@ interface Props {
   }>;
 };
 
-export const Page = async ({ params }: Props) => {
+const Page = async ({ params }: Props) => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
